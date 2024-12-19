@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "run_hardhat_node": "npx hardhat node",
+    "deploydev": "npx hardhat compile && npx hardhat ignition deploy ./ignition/modules/MintToken.js --network localhost",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
