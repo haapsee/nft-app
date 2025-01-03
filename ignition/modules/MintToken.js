@@ -4,8 +4,7 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 export default buildModule("MintTokenModule", (m) => {
+  const mint = m.contract("MintToken", ["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"]);
 
-  const lock = m.contract("MintToken", ["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"]);
-
-  return { lock };
+  return { mint };
 });

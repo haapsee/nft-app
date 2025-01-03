@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "run_hardhat_node": "npx hardhat node",
+    "wipe": "npx hardhat ignition wipe chain-31337 MintTokenModule#MintToken",
     "deploydev": "npx hardhat compile && npx hardhat ignition deploy ./ignition/modules/MintToken.js --network localhost",
-    "dev": "vite",
+    "dev": "npm run deploydev && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

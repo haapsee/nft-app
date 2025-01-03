@@ -22,6 +22,12 @@ contract MintToken is ERC721, ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, uri);
     }
 
+
+    function count() public returns (uint256) {
+        require(_nextTokenId > 0, "No tokens minted yet");
+        return _nextTokenId;
+    }
+
     // The following functions are overrides required by Solidity.
 
     function tokenURI(uint256 tokenId)
@@ -40,9 +46,5 @@ contract MintToken is ERC721, ERC721URIStorage, Ownable {
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
-    }
-
-    function count() public view returns (uint256) {
-        return _nextTokenId;
     }
 }

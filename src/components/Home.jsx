@@ -5,16 +5,15 @@ import { ethers } from 'ethers';
 import MintToken from '../../artifacts/contracts/MintToken.sol/MintToken.json';
 
 const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
-
 const provider = new ethers.JsonRpcProvider("http://localhost:8545");
-
-const signer = provider.getSigner();
-
-console.log("ABI", MintToken.abi);
-
-// get the smart contract
+// const provider = new ethers.BrowserProvider(window.ethereum)
+const signer = await provider.getSigner();
 const contract = new ethers.Contract(contractAddress, MintToken.abi, signer);
-
+// const contract = await ethers.getContractAt(
+//   "MintToken",
+//   contractAddress,
+//   signer,
+// )
 
 function Home() {
 
@@ -25,9 +24,9 @@ function Home() {
 
   const getCount = async () => {
     console.log("CONTRACT", contract, contract.connect())
-    const count = await contract.count();
-    console.log(parseInt(count));
-    setTotalMinted(parseInt(count));
+    const count = parseInt(await contract.count());
+    console.log(count);
+    setTotalMinted(count || 0);
   };
 
   return (
